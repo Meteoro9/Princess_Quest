@@ -43,6 +43,7 @@ public class AttackComponent : MonoBehaviour
         isAttacking = false;
     }
 
+    // TODO multiply offset.x * -1 if last movement was left, +1 if last movement was right
     void SetHitboxProperties(GameObject hitbox, AttackSO attack)
     {
         BoxCollider hitboxCollider = hitbox.GetComponent<BoxCollider>();

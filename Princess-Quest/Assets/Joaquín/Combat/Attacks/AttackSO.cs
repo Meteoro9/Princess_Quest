@@ -19,10 +19,10 @@ public class AttackSO : ScriptableObject
     [Range(0, 5)]
     public float endingTime = 1.0f;
 
-    public int damage = 1;
-
     [Header("Hitbox data")]
     public Vector3 offset;
     public Vector3 size = new(1, 1, 1);
     public Vector3 direction;
+    public int damage = 1;
+    public int pushForce = 100;
 }

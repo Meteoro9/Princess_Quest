@@ -15,7 +15,7 @@ public class Hitbox : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Hurtbox otherHurbox = other.GetComponent<Hurtbox>();
-        if (otherHurbox is not null)
+        if (otherHurbox != null)
         {
             // Debug.Log(transform.parent.gameObject.name + " has hit " + other.gameObject.name);
             otherHurbox.OnHit();

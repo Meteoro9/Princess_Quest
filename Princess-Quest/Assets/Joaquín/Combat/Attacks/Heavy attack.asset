@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   comboPath: 01000000
-  startUpTime: 0.6
-  activeTime: 5
+  startUpTime: 0.5
+  activeTime: 0.35
   endingTime: 0.3
   damage: 1
   offset: {x: 2, y: 0, z: 0}

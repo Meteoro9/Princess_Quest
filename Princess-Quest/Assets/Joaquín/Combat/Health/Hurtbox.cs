@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(CapsuleCollider))]
 public class Hurtbox : MonoBehaviour
 {
     [SerializeField]

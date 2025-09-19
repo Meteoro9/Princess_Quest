@@ -14,7 +14,12 @@ public class Health : MonoBehaviour
     int HP
     {
         get { return hp; }
-        set { hp = math.clamp(hp, 0, maxHp); }
+        set { hp = math.clamp(value, 0, maxHp); }
+    }
+
+    void Awake()
+    {
+        HP = maxHp;
     }
 
     public void TakeDamage(int dmg)
