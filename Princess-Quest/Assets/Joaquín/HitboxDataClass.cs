@@ -11,6 +11,22 @@ public class HitboxData
         this.pushForce = pushForce;
     }
 
+    public HitboxData(AttackSO attackSO)
+    {
+        offset = attackSO.offset;
+        size = attackSO.size;
+        direction = attackSO.direction;
+        damage = attackSO.damage;
+        pushForce = attackSO.pushForce;
+    }
+
+    // Creates a HitboxData class instance with a damage of 1, all other values are null
+    public HitboxData(GameObject hitter, int dmg = 1)
+    {
+        damage = dmg;
+        this.hitter = hitter;
+    }
+
     Vector3 offset;
     public Vector3 Offset
     {
@@ -36,11 +52,22 @@ public class HitboxData
     {
         get { return pushForce; }
     }
+    GameObject hitter;
+    public GameObject Hitter
+    {
+        get { return hitter; }
+    }
 
     public static void Set(AttackSO attackSO, GameObject hitbox)
     {
+        HitboxData newHitboxData = new HitboxData(attackSO);
+        newHitboxData.hitter = hitbox.transform.parent.gameObject;
+
         BoxCollider hitboxColl = hitbox.GetComponent<BoxCollider>();
-        hitboxColl.center = attackSO.offset;
-        hitboxColl.size = attackSO.size;
+        hitboxColl.center = newHitboxData.offset;
+        hitboxColl.size = newHitboxData.size;
+
+        Hitbox newHitbox = hitbox.GetComponent<Hitbox>();
+        newHitbox.hitboxData = newHitboxData;
     }
 }

@@ -20,9 +20,9 @@ public class EnemyMovement : MonoBehaviour
         rb.maxLinearVelocity = maxSpeed;
     }
 
-    public void MoveTo(Vector3 worldPos)
+    public void MoveTo(Vector3 targetPos)
     {
-        Vector3 dir = worldPos - transform.position;
+        Vector3 dir = (targetPos - transform.position).normalized;
         rb.AddForce(dir * acceleration);
     }
 

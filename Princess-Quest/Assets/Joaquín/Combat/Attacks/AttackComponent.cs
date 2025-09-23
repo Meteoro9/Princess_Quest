@@ -31,7 +31,6 @@ public class AttackComponent : MonoBehaviour
     {
         isAttacking = true;
         GameObject newHitbox = Instantiate(hitboxPrefab, transform);
-        // SetHitboxProperties(newHitbox, attack);
         HitboxData.Set(attack, newHitbox);
 
         newHitbox.SetActive(false);
@@ -44,6 +43,8 @@ public class AttackComponent : MonoBehaviour
         Destroy(newHitbox);
         isAttacking = false;
     }
+
+    // SetHitboxProperties(newHitbox, attack);
 
     // TODO multiply offset.x * -1 if last movement was left, +1 if last movement was right
     /*     void SetHitboxProperties(GameObject hitbox, AttackSO attack)

@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 4975208763597636607}
   - component: {fileID: 1662748635577053070}
   - component: {fileID: 1202596514444736762}
-  - component: {fileID: -3207880002260284900}
   m_Layer: 0
   m_Name: Flying Squid
   m_TagString: Untagged
@@ -37,7 +36,8 @@ Transform:
   m_LocalPosition: {x: 1.451417, y: 2.1249807, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2782342850478520030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8923431990803102665
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  acceleration: 0.1
+  acceleration: 0.5
   target: {fileID: 0}
 --- !u!114 &4975208763597636607
 MonoBehaviour:
@@ -183,31 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHurtboxHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4975208763597636607}
-        m_TargetAssemblyTypeName: PushableComponent, Assembly-CSharp
-        m_MethodName: Push
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1202596514444736762}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: TakeDamage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1202596514444736762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,31 +211,75 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2202242928939310015}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-        m_MethodName: set_useGravity
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   maxHp: 10
---- !u!114 &-3207880002260284900
-MonoBehaviour:
+  hp: 0
+--- !u!1001 &8614298235728623904
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3085366177183964713}
+    m_Modifications:
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6249393059493564986, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_Name
+      value: HitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147172665996583921, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7147172665996583921, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+--- !u!4 &2782342850478520030 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+  m_PrefabInstance: {fileID: 8614298235728623904}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032873008383516203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f33a0551937e24185367b034cd6312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitboxPrefab: {fileID: 6249393059493564986, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
-  attackLight: {fileID: 11400000, guid: 50b4c30191549734c82e4a5142303e26, type: 2}
-  attackHeavy: {fileID: 0}

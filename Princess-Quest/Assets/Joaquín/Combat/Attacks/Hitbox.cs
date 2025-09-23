@@ -11,6 +11,8 @@ public class Hitbox : MonoBehaviour
     {
         BoxCollider boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
+
+        hitboxData = hitboxData == null ? new(gameObject) : hitboxData;
     }
 
     void OnTriggerEnter(Collider other)
@@ -19,7 +21,7 @@ public class Hitbox : MonoBehaviour
         if (otherHurbox != null)
         {
             // Debug.Log(transform.parent.gameObject.name + " has hit " + other.gameObject.name);
-            otherHurbox.OnHit();
+            otherHurbox.OnHit(hitboxData);
             OnHitboxHit?.Invoke();
         }
     }
