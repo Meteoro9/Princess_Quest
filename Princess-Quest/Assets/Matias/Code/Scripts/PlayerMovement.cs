@@ -8,14 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _groundCheckDistance;
     [SerializeField] LayerMask _groundLayer;
 
-    Rigidbody rb;
+    Rigidbody _rb;
     float _moveH;
     Vector3 _movement;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        _rb = GetComponent<Rigidbody>();
+        _rb.freezeRotation = true;
     }
 
     void Update()
@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour
         // Salto
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+            _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
     }
 
@@ -35,22 +36,22 @@ public class PlayerMovement : MonoBehaviour
     {
         // Movimiento horizontal
         _movement = Vector3.right * _moveH * _speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + _movement);
+        _rb.MovePosition(_rb.position + _movement);
 
         // Rotación instantánea según la dirección
         if (_moveH > 0.1f) // Derecha
         {
-            rb.MoveRotation(Quaternion.Euler(0, 0f, 0));
+            _rb.MoveRotation(Quaternion.Euler(0, 0f, 0));
         }
         else if (_moveH < -0.1f) // Izquierda
         {
-            rb.MoveRotation(Quaternion.Euler(0, 180f, 0));
+            _rb.MoveRotation(Quaternion.Euler(0, 180f, 0));
         }
     }
 
     void OnDrawGizmos()
     {
-        // Dibuja el raycast, VErde significa que toca el suelo, rojo que no 
+        // Dibuja el raycast, Verde significa que toca el suelo, rojo que no 
         bool grounded = Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayer);
         Gizmos.color = grounded ? Color.green : Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundCheckDistance);
