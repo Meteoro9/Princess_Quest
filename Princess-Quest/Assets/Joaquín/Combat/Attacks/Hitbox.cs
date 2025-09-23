@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Hitbox : MonoBehaviour
 {
     UnityEvent OnHitboxHit = new();
+    public HitboxData hitboxData;
 
     void OnEnable()
     {

@@ -14,4 +14,13 @@ public class PushableComponent : MonoBehaviour
 
         rb.AddForce(dir * 500 / weight);
     }
+    // TODO make this work
+    /*     public void Push(HitboxData hitboxData)
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Vector3 dir = hitboxData.Direction.normalized;
+            int pForce = hitboxData.PushForce;
+    
+            rb.AddForce(dir * pForce / weight);
+        } */
 }

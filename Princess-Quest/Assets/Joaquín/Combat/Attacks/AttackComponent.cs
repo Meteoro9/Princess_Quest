@@ -14,6 +14,7 @@ public class AttackComponent : MonoBehaviour
 
     bool isAttacking;
 
+    // This is mainly for ComboComponent
     public delegate AttackSO OnAttack(AttackType attack);
     public OnAttack onAttack;
 
@@ -30,7 +31,8 @@ public class AttackComponent : MonoBehaviour
     {
         isAttacking = true;
         GameObject newHitbox = Instantiate(hitboxPrefab, transform);
-        SetHitboxProperties(newHitbox, attack);
+        // SetHitboxProperties(newHitbox, attack);
+        HitboxData.Set(attack, newHitbox);
 
         newHitbox.SetActive(false);
         yield return new WaitForSeconds(attack.startUpTime);
@@ -44,12 +46,12 @@ public class AttackComponent : MonoBehaviour
     }
 
     // TODO multiply offset.x * -1 if last movement was left, +1 if last movement was right
-    void SetHitboxProperties(GameObject hitbox, AttackSO attack)
-    {
-        BoxCollider hitboxCollider = hitbox.GetComponent<BoxCollider>();
-        hitboxCollider.size = attack.size;
-        hitboxCollider.center = attack.offset;
-    }
+    /*     void SetHitboxProperties(GameObject hitbox, AttackSO attack)
+        {
+            BoxCollider hitboxCollider = hitbox.GetComponent<BoxCollider>();
+            hitboxCollider.size = attack.size;
+            hitboxCollider.center = attack.offset;
+        } */
 
     AttackSO GetBaseAttack(AttackType attackType)
     {
