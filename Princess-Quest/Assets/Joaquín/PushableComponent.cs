@@ -9,26 +9,17 @@ public class PushableComponent : MonoBehaviour, IHurtbox
 
     public void OnHurtboxHit(HitboxData hitboxData)
     {
-        Push(hitboxData.Direction, hitboxData.PushForce, hitboxData.Hitter);
+        Push(hitboxData.direction, hitboxData.pushForce, hitboxData.Hitter);
     }
 
     public void Push(Vector3 direction, int pushForce, GameObject hitter)
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         Vector3 dir = direction.normalized;
-        Debug.Log("direction of push : " + dir);
-
-        Debug.Log(
-            "is hitter to the right of "
-                + gameObject.name
-                + " : "
-                + (hitter.transform.position.x > transform.position.x)
-        );
         if (hitter.transform.position.x > transform.position.x)
         {
             dir.x *= -1;
         }
-        Debug.Log("Force added to the rigidbody: " + dir * pushForce / weight);
 
         rb.AddForce(dir * pushForce / weight);
     }

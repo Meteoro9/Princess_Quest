@@ -27,32 +27,14 @@ public class HitboxData
         this.hitter = hitter;
     }
 
-    Vector3 offset;
-    public Vector3 Offset
-    {
-        get { return offset; }
-    }
-    Vector3 size;
-    public Vector3 Size
-    {
-        get { return size; }
-    }
-    Vector3 direction;
-    public Vector3 Direction
-    {
-        get { return direction; }
-    }
-    int damage;
-    public int Damage
-    {
-        get { return damage; }
-    }
-    int pushForce;
-    public int PushForce
-    {
-        get { return pushForce; }
-    }
+    public readonly Vector3 offset;
+    public readonly Vector3 size;
+    public readonly Vector3 direction;
+    public readonly int damage;
+    public readonly int pushForce;
+
     GameObject hitter;
+
     public GameObject Hitter
     {
         get { return hitter; }

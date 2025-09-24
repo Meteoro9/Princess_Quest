@@ -26,8 +26,8 @@ public class AttackSO : ScriptableObject
     public int damage = 1;
     public int pushForce = 100;
 
-    public HitboxData GetHitboxData()
-    {
-        return new HitboxData(offset, size, direction, damage, pushForce);
-    }
+    /*  public HitboxData GetHitboxData()
+        {
+            return new HitboxData(offset, size, direction, damage, pushForce);
+        }  */
 }

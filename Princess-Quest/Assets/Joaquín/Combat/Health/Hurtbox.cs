@@ -8,8 +8,6 @@ public class Hurtbox : MonoBehaviour
 
     public void OnHit(HitboxData hitboxData)
     {
-        // Debug.Log(gameObject.name + " was hit ");
-
         if (hitboxData != null)
         {
             foreach (IHurtbox item in GetComponents<IHurtbox>())
