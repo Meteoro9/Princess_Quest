@@ -25,4 +25,9 @@ public class AttackSO : ScriptableObject
     public Vector3 direction;
     public int damage = 1;
     public int pushForce = 100;
+
+    /*  public HitboxData GetHitboxData()
+        {
+            return new HitboxData(offset, size, direction, damage, pushForce);
+        }  */
 }
