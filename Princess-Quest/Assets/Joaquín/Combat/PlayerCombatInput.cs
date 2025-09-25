@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CombatInput : MonoBehaviour
 {
+    
     [SerializeField]
     KeyCode attackKey = KeyCode.Z;
 
@@ -9,10 +10,13 @@ public class CombatInput : MonoBehaviour
     KeyCode strongAttackKey = KeyCode.X;
 
     AttackComponent combatTest;
+    Animator animator;
 
     void OnEnable()
     {
         combatTest = GetComponent<AttackComponent>();
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -20,10 +24,17 @@ public class CombatInput : MonoBehaviour
         if (Input.GetKeyDown(attackKey))
         {
             combatTest.Attack(AttackType.Light);
+            animator.SetBool("Punch", true);
         }
         else if (Input.GetKeyDown(strongAttackKey))
         {
             combatTest.Attack(AttackType.Heavy);
+            animator.SetBool("Kick", true);
+        }
+        else
+        {
+            animator.SetBool("Punch", false);
+            animator.SetBool("Kick", false);
         }
     }
 }
