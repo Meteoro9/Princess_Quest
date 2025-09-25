@@ -19,6 +19,6 @@ MonoBehaviour:
   endingTime: 0.06
   offset: {x: 1, y: 0, z: 0}
   size: {x: 1, y: 1, z: 1}
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 1, y: 0.3, z: 0}
   damage: 1
-  pushForce: 500
+  pushForce: 300
