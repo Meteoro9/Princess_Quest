@@ -1,20 +1,24 @@
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IHurtbox
 {
     [SerializeField]
     UnityEvent onDeathEvent = new();
 
     [SerializeField]
     int maxHp = 10;
+    public int MaxHP
+    {
+        get { return maxHp; }
+    }
 
+    [SerializeField]
     int hp;
-    int HP
+    public int HP
     {
         get { return hp; }
-        set { hp = math.clamp(value, 0, maxHp); }
+        private set { hp = Mathf.Clamp(value, 0, maxHp); }
     }
 
     void Awake()
@@ -22,10 +26,16 @@ public class Health : MonoBehaviour
         HP = maxHp;
     }
 
+    public void OnHurtboxHit(HitboxData hitboxData)
+    {
+        TakeDamage(hitboxData.damage);
+    }
+
     public void TakeDamage(int dmg)
     {
         if (HP - dmg <= 0)
         {
+            HP -= dmg;
             OnDeath();
             return;
         }
