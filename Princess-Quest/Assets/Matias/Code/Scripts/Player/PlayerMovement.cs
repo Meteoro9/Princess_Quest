@@ -1,6 +1,8 @@
 using Unity.Mathematics;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float _speed;
@@ -8,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _groundCheckDistance;
     [SerializeField] LayerMask _groundLayer;
 
+    Animator _animator;
     Rigidbody _rb;
     float _moveH;
     Vector3 _movement;
 
     void Start()
     {
+        _animator = GetComponentInChildren<Animator>();
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
     }
@@ -27,17 +31,33 @@ public class PlayerMovement : MonoBehaviour
         // Salto
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, 0f);
             _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
+        _animator.SetBool("Jump", !grounded);
     }
 
     void FixedUpdate()
     {
+        Movement();
+        Rotation();
+    }
+    void Movement()
+    {
         // Movimiento horizontal
         _movement = Vector3.right * _moveH * _speed * Time.fixedDeltaTime;
         _rb.MovePosition(_rb.position + _movement);
-
+        if (_moveH != 0f)
+        {
+            _animator.SetBool("Run", true);
+        }
+        else
+        {
+            _animator.SetBool("Run", false);
+        }
+    }
+    void Rotation()
+    {
         // Rotación instantánea según la dirección
         if (_moveH > 0.1f) // Derecha
         {
@@ -55,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         bool grounded = Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayer);
         Gizmos.color = grounded ? Color.green : Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundCheckDistance);
-        
+
         // Dibuja una esfera pequeña al final del rayo
         Gizmos.DrawSphere(transform.position + Vector3.down * _groundCheckDistance, 0.05f);
     }
