@@ -29,6 +29,14 @@ public class EnemyMovement : MonoBehaviour
     // TODO make this component not dependent on target, create component for player detection.
     void FixedUpdate()
     {
-        MoveTo(target.transform.position);
+        if (target != null)
+        {
+            MoveTo(target.transform.position);
+        }
+    }
+
+    public void SetTarget(GameObject newTarget)
+    {
+        target = newTarget;
     }
 }

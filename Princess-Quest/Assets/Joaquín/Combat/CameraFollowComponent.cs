@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
     Transform target;
 
     [SerializeField]
-    Vector3 offset = new Vector3(0, 0, 20);
+    Vector3 offset = new Vector3(0, 0, -20);
 
     void LateUpdate()
     {
