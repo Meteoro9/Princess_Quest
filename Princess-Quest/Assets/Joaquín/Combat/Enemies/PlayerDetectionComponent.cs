@@ -21,7 +21,7 @@ public class PlayerDetectionComponent : MonoBehaviour
         Collider[] colliders = Physics.OverlapBox(transform.position, boxColl.size / 2);
         foreach (Collider coll in colliders)
         {
-            if (coll.GetComponent<EnemyMovement>() != null)
+            if (coll.CompareTag("Enemy"))
             {
                 enemiesInArea.Add(coll.gameObject);
             }
@@ -30,7 +30,7 @@ public class PlayerDetectionComponent : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.GetComponent<PlayerMovement>() != null)
+        if (collision.CompareTag("Player"))
         {
             PlayerEntered?.Invoke();
             foreach (GameObject enemy in enemiesInArea)
