@@ -4,13 +4,13 @@ public class Testing_Finish : MonoBehaviour
 {
     private int enemiesInside = 0;
 
-    MeshRenderer greenPlane;
+    [SerializeField] MeshRenderer greenPlane;
+    [SerializeField] MeshRenderer winText;
 
     private void OnEnable()
     {
-        greenPlane = GetComponentInChildren<MeshRenderer>();
-
         greenPlane.enabled = false;
+        winText.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,6 +40,7 @@ public class Testing_Finish : MonoBehaviour
         if (enemiesInside <= 0)
         {
             greenPlane.enabled = true;
+            winText.enabled = true;
         }
     }
 }
