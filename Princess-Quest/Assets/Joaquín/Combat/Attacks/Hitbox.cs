@@ -12,7 +12,7 @@ public class Hitbox : MonoBehaviour
         BoxCollider boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
 
-        hitboxData ??= new HitboxData(gameObject);
+        hitboxData ??= new HitboxData(gameObject, 1);
     }
 
     void OnTriggerEnter(Collider other)
