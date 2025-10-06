@@ -39,4 +39,10 @@ public class EnemyMovement : MonoBehaviour
     {
         target = newTarget;
     }
+
+    void OnDestroy()
+    {
+        PlayerDetectionComponent pdc = transform.parent.GetComponent<PlayerDetectionComponent>();
+        pdc.RemoveFromEnemyList(gameObject);
+    }
 }

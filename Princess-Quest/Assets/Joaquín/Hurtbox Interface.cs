@@ -1,4 +1,5 @@
 public interface IHurtbox
 {
-    public void OnHurtboxHit(HitboxData hitboxData);
+    bool IHurtboxActive { get; set; }
+    void OnHurtboxHit(HitboxData hitboxData);
 }

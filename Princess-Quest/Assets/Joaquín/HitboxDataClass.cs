@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class HitboxData
 {
+    // Constructors
     public HitboxData(Vector3 offset, Vector3 size, Vector3 direction, int damage, int pushForce)
     {
         this.offset = offset;
@@ -20,12 +21,13 @@ public class HitboxData
         pushForce = attackSO.pushForce;
     }
 
-    // Creates a HitboxData class instance with a damage of 1, all other values are null
     public HitboxData(GameObject hitter, int dmg = 1)
     {
         damage = dmg;
         this.hitter = hitter;
     }
+
+    // Constructors
 
     public readonly Vector3 offset;
     public readonly Vector3 size;
@@ -34,7 +36,6 @@ public class HitboxData
     public readonly int pushForce;
 
     GameObject hitter;
-
     public GameObject Hitter
     {
         get { return hitter; }

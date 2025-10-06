@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CombatInput : MonoBehaviour
 {
-    
     [SerializeField]
     KeyCode attackKey = KeyCode.Z;
 

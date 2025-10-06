@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  isHurtboxEventActive: 1
 --- !u!114 &1662748635577053070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,47 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048187bbcfc90674d862368cf05f1979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnDeath: 1
   onDeathEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2285195648194553624}
-        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2202242928939310015}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
-        m_MethodName: set_useGravity
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2393222824539400986}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   maxHp: 6
   hp: 0
+  isHurtboxEventActive: 1
 --- !u!1001 &8614298235728623904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,11 +269,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
---- !u!1 &2393222824539400986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6249393059493564986, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
-  m_PrefabInstance: {fileID: 8614298235728623904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2782342850478520030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5841446405259808766, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
