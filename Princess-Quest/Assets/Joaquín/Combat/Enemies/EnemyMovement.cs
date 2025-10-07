@@ -26,6 +26,12 @@ public class EnemyMovement : MonoBehaviour
         rb.AddForce(dir * acceleration);
     }
 
+    public void MoveTo(GameObject target)
+    {
+        Vector3 dir = (target.transform.position - transform.position).normalized;
+        rb.AddForce(dir * acceleration);
+    }
+
     // TODO make this component not dependent on target, create component for player detection.
     void FixedUpdate()
     {
@@ -43,6 +49,9 @@ public class EnemyMovement : MonoBehaviour
     void OnDestroy()
     {
         PlayerDetectionComponent pdc = transform.parent.GetComponent<PlayerDetectionComponent>();
-        pdc.RemoveFromEnemyList(gameObject);
+        if (pdc)
+        {
+            pdc.RemoveFromEnemyList(gameObject);
+        }
     }
 }

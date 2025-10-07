@@ -67,10 +67,14 @@ public class PlayerDetectionComponent : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+
+    [SerializeField]
+    Color debugBoxColor = Color.cyan;
+
     void OnDrawGizmos()
     {
         BoxCollider boxColl = GetComponent<BoxCollider>();
-        Gizmos.color = Color.cyan;
+        Gizmos.color = debugBoxColor;
         Gizmos.DrawWireCube(transform.position, boxColl.size);
     }
 
