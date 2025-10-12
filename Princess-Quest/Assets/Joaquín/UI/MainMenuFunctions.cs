@@ -9,6 +9,11 @@ public class MainMenuFunctions : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Exit()
     {
 #if UNITY_EDITOR
