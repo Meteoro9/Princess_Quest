@@ -4,14 +4,16 @@ using UnityEngine.UI;
 public class PlayerHealthUI : MonoBehaviour
 {
     [SerializeField]
-    Health targetHealth;
+    Health PlayerHealth;
 
     [SerializeField]
     GameObject healthIcon;
 
     void Start()
     {
-        for (int i = 0; i < targetHealth.MaxHP; i++)
+        PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+
+        for (int i = 0; i < PlayerHealth.MaxHP; i++)
         {
             Instantiate(healthIcon, transform);
         }
@@ -24,9 +26,9 @@ public class PlayerHealthUI : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        for (int i = 0; i < targetHealth.MaxHP; i++)
+        for (int i = 0; i < PlayerHealth.MaxHP; i++)
         {
-            if (i < targetHealth.HP)
+            if (i < PlayerHealth.HP)
             {
                 Image img = transform.GetChild(i).GetComponent<Image>();
                 img.enabled = true;

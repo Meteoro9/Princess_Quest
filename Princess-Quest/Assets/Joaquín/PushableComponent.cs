@@ -7,6 +7,15 @@ public class PushableComponent : MonoBehaviour, IHurtbox
     [SerializeField]
     float weight = 1;
 
+    [SerializeField]
+    bool isHurtboxEventActive = true;
+    public bool IHurtboxActive { get; set; }
+
+    void Awake()
+    {
+        IHurtboxActive = isHurtboxEventActive;
+    }
+
     public void OnHurtboxHit(HitboxData hitboxData)
     {
         Push(hitboxData.direction, hitboxData.pushForce, hitboxData.Hitter);
@@ -23,7 +32,7 @@ public class PushableComponent : MonoBehaviour, IHurtbox
 
         rb.AddForce(dir * pushForce / weight);
     }
-    // TODO make this work
+    // TODO make this work?
     /*     public void Push(HitboxData hitboxData)
         {
             Rigidbody rb = GetComponent<Rigidbody>();

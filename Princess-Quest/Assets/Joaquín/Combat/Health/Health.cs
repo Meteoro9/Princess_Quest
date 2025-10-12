@@ -4,6 +4,9 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour, IHurtbox
 {
     [SerializeField]
+    bool DestroyOnDeath = true;
+
+    [SerializeField]
     UnityEvent onDeathEvent = new();
 
     [SerializeField]
@@ -21,14 +24,22 @@ public class Health : MonoBehaviour, IHurtbox
         private set { hp = Mathf.Clamp(value, 0, maxHp); }
     }
 
+    [SerializeField]
+    bool isHurtboxEventActive = true;
+    public bool IHurtboxActive { get; set; }
+
     void Awake()
     {
         HP = maxHp;
+        IHurtboxActive = isHurtboxEventActive;
     }
 
     public void OnHurtboxHit(HitboxData hitboxData)
     {
-        TakeDamage(hitboxData.damage);
+        if (IHurtboxActive)
+        {
+            TakeDamage(hitboxData.damage);
+        }
     }
 
     public void TakeDamage(int dmg)
@@ -45,5 +56,9 @@ public class Health : MonoBehaviour, IHurtbox
     void OnDeath()
     {
         onDeathEvent?.Invoke();
+        if (DestroyOnDeath)
+        {
+            Destroy(gameObject);
+        }
     }
 }
