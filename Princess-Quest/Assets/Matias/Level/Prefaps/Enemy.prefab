@@ -12,6 +12,11 @@ GameObject:
   - component: {fileID: 2705594807411117344}
   - component: {fileID: 4850299133702091929}
   - component: {fileID: 7965909447368038101}
+  - component: {fileID: 9170419032130365236}
+  - component: {fileID: 4172799206109408618}
+  - component: {fileID: 2193458615004896000}
+  - component: {fileID: 6332626475764670481}
+  - component: {fileID: 4905297799422682818}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -98,6 +103,93 @@ MonoBehaviour:
   _targetMovementDelay: 0.5
   _target: {x: 0, y: 0, z: 0}
   _groundlinearDamping: 0
+--- !u!114 &9170419032130365236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935277199060124729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f33a0551937e24185367b034cd6312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxPrefab: {fileID: 6249393059493564986, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
+  attackLight: {fileID: 11400000, guid: b11ed70bc97df204d8a4dfc2149b0fb1, type: 2}
+  attackHeavy: {fileID: 0}
+--- !u!136 &4172799206109408618
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935277199060124729}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26745075
+  m_Height: 1.0436013
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2193458615004896000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935277199060124729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048187bbcfc90674d862368cf05f1979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyOnDeath: 1
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHp: 8
+  hp: 0
+  isHurtboxEventActive: 1
+--- !u!114 &6332626475764670481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935277199060124729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1011b83e6c8081428fe67129fc38378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHurtboxHit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4905297799422682818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4935277199060124729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45333f55f191f0344ab6d0fa90233064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 2705594807411117344}
+  weight: 1
+  isHurtboxEventActive: 1
 --- !u!1 &5429442049085060076
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +201,6 @@ GameObject:
   - component: {fileID: 5112562945817447122}
   - component: {fileID: 7212560763032052080}
   - component: {fileID: 295898953577047116}
-  - component: {fileID: 8407554072422152102}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -186,29 +277,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8407554072422152102
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5429442049085060076}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7002703470146235673
 GameObject:
   m_ObjectHideFlags: 0

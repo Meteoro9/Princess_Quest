@@ -13,6 +13,7 @@ public class AttackComponent : MonoBehaviour
     AttackSO attackHeavy;
 
     bool isAttacking;
+    public bool IsAttacking => isAttacking;
 
     // This is mainly for ComboComponent
     public delegate AttackSO OnAttack(AttackType attack);

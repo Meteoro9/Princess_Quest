@@ -2,7 +2,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuFunctions : MonoBehaviour
+[CreateAssetMenu]
+public class MenuFunctions : ScriptableObject
 {
     public void GoToLevel(string sceneName)
     {
@@ -12,6 +13,12 @@ public class MainMenuFunctions : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void AddToUI(GameObject element)
+    {
+        Transform rectTransform = GameObject.FindGameObjectWithTag("UI").transform.GetChild(0);
+        Instantiate(element, rectTransform);
     }
 
     public void Exit()

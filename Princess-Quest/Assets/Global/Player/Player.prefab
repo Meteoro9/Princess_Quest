@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2011355013261677960}
   - component: {fileID: 2410456025634593588}
   - component: {fileID: 3763405434714417384}
-  - component: {fileID: 4431842374782130770}
+  - component: {fileID: 1248023585025171261}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -149,7 +149,7 @@ MonoBehaviour:
   OnHurtboxHit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4431842374782130770
+--- !u!114 &1248023585025171261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,16 +158,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3878137807594216835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 048187bbcfc90674d862368cf05f1979, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c5c2dab8274373428212cf86d061adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyOnDeath: 0
+  DestroyOnDeath: 1
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
   maxHp: 3
   hp: 0
-  isHurtboxEventActive: 0
+  isHurtboxEventActive: 1
 --- !u!1 &7278086642729002780
 GameObject:
   m_ObjectHideFlags: 0
