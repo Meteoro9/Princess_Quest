@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -9133914395492512728}
   m_Layer: 0
   m_Name: Audio_Game
-  m_TagString: Untagged
+  m_TagString: Audio Game
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,11 +44,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 9616d3b95347a20429d6f2102480c8f0, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -142,3 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63073038d7f70304a864b63d0bcced13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NormalMusic: {fileID: 0}
+  CombatMusic: {fileID: 0}

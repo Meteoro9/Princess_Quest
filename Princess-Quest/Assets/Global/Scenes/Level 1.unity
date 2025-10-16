@@ -10939,10 +10939,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2160151887555928067, guid: 297bb1947f8ce0e4ab349c083c5d55e5, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2671704870242389339, guid: 297bb1947f8ce0e4ab349c083c5d55e5, type: 3}
       propertyPath: m_Name
       value: Audio_Game
@@ -12278,11 +12274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073252156141423561, guid: 00dab1d7828e8204190b8a15ec2ee5fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.47
+      value: 4.47
       objectReference: {fileID: 0}
     - target: {fileID: 9073252156141423561, guid: 00dab1d7828e8204190b8a15ec2ee5fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 3.15
       objectReference: {fileID: 0}
     - target: {fileID: 9073252156141423561, guid: 00dab1d7828e8204190b8a15ec2ee5fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12325,6 +12321,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2065667313}
   - {fileID: 1224535913}
   - {fileID: 1769929123}
   - {fileID: 599899460}
@@ -12335,7 +12332,6 @@ SceneRoots:
   - {fileID: 545366921}
   - {fileID: 1446853698}
   - {fileID: 2117963828}
-  - {fileID: 2065667313}
   - {fileID: 2110965177}
   - {fileID: 2124237538}
   - {fileID: 624106319}

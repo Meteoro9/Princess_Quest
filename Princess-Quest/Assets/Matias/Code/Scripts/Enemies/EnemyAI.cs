@@ -26,11 +26,33 @@ public class EnemyAI : MonoBehaviour
     private int _currentPatrolIndex = 0;
 
     AttackComponent _atk;
+    audio_gameplay audioGameplay;
+    public bool IsChasing
+    {
+        get => _isChasing;
+        private set
+        {
+            if (_isChasing != value)
+            {
+                _isChasing = value;
+                if (_isChasing == true)
+                {
+                    audioGameplay.OnEnemyChasing(this);
+                }
+                else if (_isChasing == false)
+                {
+                    audioGameplay.OnEnemyStoppedChasing(this);
+                }
+            }
+        }
+    }
 
     void Start()
     {
         _movement = GetComponent<EnemiesMovementTest>();
         _atk = GetComponent<AttackComponent>();
+        GameObject aS = GameObject.FindGameObjectWithTag("Audio Game");
+        audioGameplay = aS.GetComponent<audio_gameplay>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -56,7 +78,8 @@ public class EnemyAI : MonoBehaviour
 
         if (canSeePlayer)
         {
-            _isChasing = true;
+            // _isChasing = true;
+            IsChasing = true;
 
             if (distanceToPlayer > _attackRange)
             {
@@ -71,7 +94,8 @@ public class EnemyAI : MonoBehaviour
         }
         else if (_isChasing)
         {
-            _isChasing = false;
+            // _isChasing = false;
+            IsChasing = false;
             ResumePatrol();
         }
         else
@@ -193,7 +217,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public bool IsChasing() => _isChasing; //Saber si esta persigiendo al Player
+    // public bool IsChasing() => _isChasing; //Saber si esta persigiendo al Player
 
     public void SetPatrolPoints(Vector3[] points) => _patrolPoints = points; //Agregar un punto de patrullaje
+
+    void OnDestroy()
+    {
+        audioGameplay.OnEnemyStoppedChasing(this);
+    }
 }
