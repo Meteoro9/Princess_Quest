@@ -224,6 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyOnDeath: 1
+  onDamageTakenEvent:
+    m_PersistentCalls:
+      m_Calls: []
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -258,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 8131027958302983098}
-  weight: 0.7
+  weight: 1
   isHurtboxEventActive: 1
 --- !u!114 &5840871956073502504
 MonoBehaviour:

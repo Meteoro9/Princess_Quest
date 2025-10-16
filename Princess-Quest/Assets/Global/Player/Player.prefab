@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2410456025634593588}
   - component: {fileID: 3763405434714417384}
   - component: {fileID: 1248023585025171261}
+  - component: {fileID: 4675406368591707409}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -162,11 +163,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyOnDeath: 1
-  onDeathEvent:
+  onDamageTakenEvent:
     m_PersistentCalls:
       m_Calls: []
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f2c09ea8d7bb4b84fb372b34fd7d8a27, type: 2}
+        m_TargetAssemblyTypeName: MenuFunctions, Assembly-CSharp
+        m_MethodName: AddToUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2640590944231919421, guid: 0154fbdc507d9d34d9e26f8339981092, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   maxHp: 3
   hp: 0
+  isHurtboxEventActive: 1
+  isInvincible: 0
+  invinTime: 1.4
+--- !u!114 &4675406368591707409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878137807594216835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45333f55f191f0344ab6d0fa90233064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 3444289445760832831}
+  weight: 1
   isHurtboxEventActive: 1
 --- !u!1 &7278086642729002780
 GameObject:

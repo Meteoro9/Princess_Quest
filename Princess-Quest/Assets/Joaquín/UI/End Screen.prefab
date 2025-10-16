@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 5814265273630290234}
   - component: {fileID: 3118825134312263735}
   m_Layer: 5
-  m_Name: Lose Screen
+  m_Name: End Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

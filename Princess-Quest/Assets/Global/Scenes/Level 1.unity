@@ -3649,50 +3649,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: isInvincible
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: f2c09ea8d7bb4b84fb372b34fd7d8a27, type: 2}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddToUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuFunctions, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 2640590944231919421, guid: 0154fbdc507d9d34d9e26f8339981092, type: 3}
-    - target: {fileID: 1248023585025171261, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: onDeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3763405434714417384, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: OnHurtboxHit.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3763405434714417384, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      propertyPath: OnHurtboxHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3878137807594216835, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3703,7 +3659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6884507133290328005, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.12
+      value: 1.091
       objectReference: {fileID: 0}
     - target: {fileID: 6884507133290328005, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3740,36 +3696,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3878137807594216835, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 619314778}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
---- !u!1 &619314770 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3878137807594216835, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-  m_PrefabInstance: {fileID: 599899460}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &619314777 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3444289445760832831, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-  m_PrefabInstance: {fileID: 599899460}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &619314778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619314770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45333f55f191f0344ab6d0fa90233064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 619314777}
-  weight: 1
-  isHurtboxEventActive: 1
 --- !u!1001 &624106319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12350,11 +12278,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073252156141423561, guid: 00dab1d7828e8204190b8a15ec2ee5fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.23
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 9073252156141423561, guid: 00dab1d7828e8204190b8a15ec2ee5fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 9073252156141423561, guid: 00dab1d7828e8204190b8a15ec2ee5fb, type: 3}
       propertyPath: m_LocalPosition.z
