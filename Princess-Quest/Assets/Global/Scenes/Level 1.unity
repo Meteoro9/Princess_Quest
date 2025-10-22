@@ -6896,9 +6896,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101570431}
-  m_Text: 'Z para golpear
+  m_Text: 'J para golpear
 
-    X para patear'
+    K para patear'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
