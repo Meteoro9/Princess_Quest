@@ -47,6 +47,7 @@ public class MovablePlatform : MonoBehaviour
         AmountOfButtons--;
     }
 
+    [ContextMenu("MoveToTargetPosition")]
     public void MoveToTargetPosition()
     {
         StartCoroutine(MovementCoroutine());

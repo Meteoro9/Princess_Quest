@@ -1,8 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttackComponent : MonoBehaviour
 {
+    [SerializeField]
+    UnityEvent OnAttackHit = new();
+
     [SerializeField]
     GameObject hitboxPrefab;
 
@@ -13,16 +17,13 @@ public class AttackComponent : MonoBehaviour
     AttackSO attackHeavy;
 
     bool isAttacking;
-
-    // This is mainly for ComboComponent
-    public delegate AttackSO OnAttack(AttackType attack);
-    public OnAttack onAttack;
+    public bool IsAttacking => isAttacking;
 
     public void Attack(AttackType attackType)
     {
         if (!isAttacking)
         {
-            AttackSO attack = onAttack?.Invoke(attackType) ?? GetBaseAttack(attackType);
+            AttackSO attack = GetBaseAttack(attackType);
             StartCoroutine(AttackCor(attack));
         }
     }
@@ -31,6 +32,8 @@ public class AttackComponent : MonoBehaviour
     {
         isAttacking = true;
         GameObject newHitbox = Instantiate(hitboxPrefab, transform);
+        Hitbox hitbox = newHitbox.GetComponent<Hitbox>();
+        hitbox.OnHitboxHit += InvokeOnAttackHit;
         HitboxData.Set(attack, newHitbox);
 
         newHitbox.SetActive(false);
@@ -44,16 +47,6 @@ public class AttackComponent : MonoBehaviour
         isAttacking = false;
     }
 
-    // SetHitboxProperties(newHitbox, attack);
-
-    // TODO multiply offset.x * -1 if last movement was left, +1 if last movement was right
-    /*     void SetHitboxProperties(GameObject hitbox, AttackSO attack)
-        {
-            BoxCollider hitboxCollider = hitbox.GetComponent<BoxCollider>();
-            hitboxCollider.size = attack.size;
-            hitboxCollider.center = attack.offset;
-        } */
-
     AttackSO GetBaseAttack(AttackType attackType)
     {
         return attackType switch
@@ -62,5 +55,10 @@ public class AttackComponent : MonoBehaviour
             AttackType.Heavy => attackHeavy,
             _ => throw new System.NotImplementedException(),
         };
+    }
+
+    void InvokeOnAttackHit()
+    {
+        OnAttackHit?.Invoke();
     }
 }

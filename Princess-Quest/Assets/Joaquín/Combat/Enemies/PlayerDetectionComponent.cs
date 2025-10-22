@@ -5,6 +5,9 @@ using UnityEngine.Events;
 public class PlayerDetectionComponent : MonoBehaviour
 {
     [SerializeField]
+    bool alertEnemiesOnPlayerEntered = true;
+
+    [SerializeField]
     UnityEvent PlayerEntered = new();
 
     [SerializeField]
@@ -18,42 +21,66 @@ public class PlayerDetectionComponent : MonoBehaviour
         BoxCollider boxColl = GetComponent<BoxCollider>();
         boxColl.isTrigger = true;
 
-        Collider[] colliders = Physics.OverlapBox(transform.position, boxColl.size / 2);
-        foreach (Collider coll in colliders)
+        /*       Collider[] colliders = Physics.OverlapBox(transform.position, boxColl.size / 2);
+                foreach (Collider coll in colliders)
+                {
+                    if (coll.CompareTag("Enemy"))
+                    {
+                        enemiesInArea.Add(coll.gameObject);
+                    }
+                } */
+
+        foreach (Transform tran in transform)
         {
-            if (coll.GetComponent<EnemyMovement>() != null)
-            {
-                enemiesInArea.Add(coll.gameObject);
-            }
+            enemiesInArea.Add(tran.gameObject);
         }
     }
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.GetComponent<PlayerMovement>() != null)
+        if (collision.CompareTag("Player"))
         {
             PlayerEntered?.Invoke();
-            foreach (GameObject enemy in enemiesInArea)
+            if (alertEnemiesOnPlayerEntered)
             {
-                enemy.GetComponent<EnemyMovement>().SetTarget(collision.gameObject);
+                foreach (GameObject enemy in enemiesInArea)
+                {
+                    EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+                    enemyMovement.SetTarget(collision.gameObject);
+                }
             }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<PlayerMovement>() != null)
+        if (other.CompareTag("Player"))
         {
             PlayerLeft?.Invoke();
         }
     }
 
+    public void RemoveFromEnemyList(GameObject enemy)
+    {
+        enemiesInArea.Remove(enemy);
+    }
+
 #if UNITY_EDITOR
+
+    [SerializeField]
+    Color debugBoxColor = Color.cyan;
+
+    [SerializeField]
+    bool showDebugCollider = true;
+
     void OnDrawGizmos()
     {
-        BoxCollider boxColl = GetComponent<BoxCollider>();
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireCube(transform.position, boxColl.size);
+        if (showDebugCollider)
+        {
+            BoxCollider boxColl = GetComponent<BoxCollider>();
+            Gizmos.color = debugBoxColor;
+            Gizmos.DrawWireCube(transform.position + boxColl.center, boxColl.size);
+        }
     }
 
 #endif
