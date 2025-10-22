@@ -1,5 +1,134 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3076618433965311579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 427111383850693843}
+  - component: {fileID: 4834897826128500492}
+  m_Layer: 0
+  m_Name: Princess Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427111383850693843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076618433965311579}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.3739561, y: -0.9783244, z: -0.44841453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6884507133290328005}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &4834897826128500492
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076618433965311579}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 7131d701ae015a54aa3d856feccd513f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3878137807594216835
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,11 +139,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6884507133290328005}
   - component: {fileID: 3444289445760832831}
+  - component: {fileID: 7532567367569076272}
   - component: {fileID: 2073289207950495318}
   - component: {fileID: 2011355013261677960}
   - component: {fileID: 2410456025634593588}
   - component: {fileID: 3763405434714417384}
-  - component: {fileID: 4431842374782130770}
+  - component: {fileID: 1248023585025171261}
+  - component: {fileID: 4675406368591707409}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,6 +167,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5593450843327826845}
+  - {fileID: 427111383850693843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3444289445760832831
@@ -65,6 +197,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!65 &7532567367569076272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878137807594216835}
+  m_Material: {fileID: 13400000, guid: a6eec0ea577d914469cf6dd8b6c8e624, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.34479624, y: 0.9191367, z: 0.2}
+  m_Center: {x: -0.044885784, y: -0.004047841, z: 0}
 --- !u!114 &2073289207950495318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,8 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c045edc11a39c864a841a34d1fbdbd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackKey: 122
-  strongAttackKey: 120
 --- !u!114 &2410456025634593588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +278,7 @@ MonoBehaviour:
   OnHurtboxHit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4431842374782130770
+--- !u!114 &1248023585025171261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,14 +287,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 3878137807594216835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 048187bbcfc90674d862368cf05f1979, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c5c2dab8274373428212cf86d061adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDeathEvent:
+  DestroyOnDeath: 1
+  onDamageTakenEvent:
     m_PersistentCalls:
       m_Calls: []
-  maxHp: 10
+  onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f2c09ea8d7bb4b84fb372b34fd7d8a27, type: 2}
+        m_TargetAssemblyTypeName: MenuFunctions, Assembly-CSharp
+        m_MethodName: AddToUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2640590944231919421, guid: 0154fbdc507d9d34d9e26f8339981092, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  maxHp: 3
   hp: 0
+  isHurtboxEventActive: 1
+  isInvincible: 0
+  invinTime: 1.4
+--- !u!114 &4675406368591707409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878137807594216835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45333f55f191f0344ab6d0fa90233064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 3444289445760832831}
+  weight: 1
+  isHurtboxEventActive: 1
 --- !u!1 &7278086642729002780
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,10 +340,9 @@ GameObject:
   - component: {fileID: 5593450843327826845}
   - component: {fileID: 8926623301307247807}
   - component: {fileID: 7758022667506548765}
-  - component: {fileID: 627937012505598120}
   m_Layer: 0
   m_Name: Princess
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,24 +439,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &627937012505598120
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7278086642729002780}
-  m_Material: {fileID: 13400000, guid: a6eec0ea577d914469cf6dd8b6c8e624, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.34479624, y: 0.9191367, z: 0.2}
-  m_Center: {x: -0.044885784, y: -0.004047841, z: 0}

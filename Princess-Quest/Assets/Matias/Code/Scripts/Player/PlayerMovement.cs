@@ -1,19 +1,31 @@
-using Unity.Mathematics;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float _speed;
-    [SerializeField] float _jumpForce;
-    [SerializeField] float _groundCheckDistance;
-    [SerializeField] LayerMask _groundLayer;
+    [SerializeField]
+    float _speed;
+
+    [SerializeField]
+    float _jumpForce;
+
+    [SerializeField]
+    float _groundCheckDistance;
+
+    [SerializeField]
+    LayerMask _groundLayer;
 
     Animator _animator;
     Rigidbody _rb;
     float _moveH;
     Vector3 _movement;
+    bool grounded;
+
+    public delegate void MovementEvent();
+    public MovementEvent OnWalking;
+    public MovementEvent OnStoppedWalking;
+
+    public bool IsGrounded => grounded;
 
     void Start()
     {
@@ -24,7 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        bool grounded = Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayer);
+        grounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            _groundCheckDistance,
+            _groundLayer
+        );
 
         _moveH = Input.GetAxis("Horizontal");
 
@@ -42,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         Rotation();
     }
+
     void Movement()
     {
         // Movimiento horizontal
@@ -50,12 +68,28 @@ public class PlayerMovement : MonoBehaviour
         if (_moveH != 0f)
         {
             _animator.SetBool("Run", true);
+
+            if (grounded)
+            {
+                OnWalking?.Invoke();
+            }
+            else
+            {
+                OnStoppedWalking?.Invoke();
+            }
+
+            // isWalking = true;
         }
         else
         {
             _animator.SetBool("Run", false);
+
+            OnStoppedWalking?.Invoke();
+
+            // isWalking = false;
         }
     }
+
     void Rotation()
     {
         // Rotación instantánea según la dirección
@@ -71,10 +105,18 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        // Dibuja el raycast, Verde significa que toca el suelo, rojo que no 
-        bool grounded = Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayer);
+        // Dibuja el raycast, Verde significa que toca el suelo, rojo que no
+        bool grounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            _groundCheckDistance,
+            _groundLayer
+        );
         Gizmos.color = grounded ? Color.green : Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundCheckDistance);
+        Gizmos.DrawLine(
+            transform.position,
+            transform.position + Vector3.down * _groundCheckDistance
+        );
 
         // Dibuja una esfera pequeña al final del rayo
         Gizmos.DrawSphere(transform.position + Vector3.down * _groundCheckDistance, 0.05f);
