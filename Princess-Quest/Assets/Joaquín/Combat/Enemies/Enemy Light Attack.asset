@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   comboPath: 
-  startUpTime: 1
-  activeTime: 2.61
-  endingTime: 1
-  offset: {x: 1, y: 0, z: 0}
+  startUpTime: 0.75
+  activeTime: 0.2
+  endingTime: 0.9
+  offset: {x: 0.7, y: 0, z: 0}
   size: {x: 1, y: 1, z: 1}
   direction: {x: 1, y: 0, z: 0}
   damage: 1

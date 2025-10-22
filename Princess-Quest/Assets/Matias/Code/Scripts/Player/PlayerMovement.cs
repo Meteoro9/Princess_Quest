@@ -19,6 +19,13 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody _rb;
     float _moveH;
     Vector3 _movement;
+    bool grounded;
+
+    public delegate void MovementEvent();
+    public MovementEvent OnWalking;
+    public MovementEvent OnStoppedWalking;
+
+    public bool IsGrounded => grounded;
 
     void Start()
     {
@@ -29,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        bool grounded = Physics.Raycast(
+        grounded = Physics.Raycast(
             transform.position,
             Vector3.down,
             _groundCheckDistance,
@@ -61,10 +68,25 @@ public class PlayerMovement : MonoBehaviour
         if (_moveH != 0f)
         {
             _animator.SetBool("Run", true);
+
+            if (grounded)
+            {
+                OnWalking?.Invoke();
+            }
+            else
+            {
+                OnStoppedWalking?.Invoke();
+            }
+
+            // isWalking = true;
         }
         else
         {
             _animator.SetBool("Run", false);
+
+            OnStoppedWalking?.Invoke();
+
+            // isWalking = false;
         }
     }
 
