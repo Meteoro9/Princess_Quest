@@ -7,6 +7,9 @@ public class Health : MonoBehaviour, IHurtbox
     bool DestroyOnDeath = true;
 
     [SerializeField]
+    UnityEvent onDamageTakenEvent = new();
+
+    [SerializeField]
     UnityEvent onDeathEvent = new();
 
     [SerializeField]
@@ -42,7 +45,7 @@ public class Health : MonoBehaviour, IHurtbox
         }
     }
 
-    public void TakeDamage(int dmg)
+    public virtual void TakeDamage(int dmg)
     {
         if (HP - dmg <= 0)
         {
@@ -51,6 +54,7 @@ public class Health : MonoBehaviour, IHurtbox
             return;
         }
         HP -= dmg;
+        onDamageTakenEvent?.Invoke();
     }
 
     void OnDeath()

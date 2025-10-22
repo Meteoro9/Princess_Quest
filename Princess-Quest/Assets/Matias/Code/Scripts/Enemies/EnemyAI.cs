@@ -1,32 +1,63 @@
-using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
+using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
     [Header("Detection")]
-    [SerializeField] float _detectionRange;
-    [SerializeField] float _attackRange;
+    [SerializeField]
+    float _detectionRange;
+
+    [SerializeField]
+    float _attackRange;
+
     //[SerializeField] LayerMask _playerLayer;
-    [SerializeField] LayerMask _obstacleLayer;
-    
+    [SerializeField]
+    LayerMask _obstacleLayer;
+
     [Header("Patrol")]
-    [SerializeField] Vector3[] _patrolPoints;
-    [SerializeField] float _pointReachedDistance;
-    
+    [SerializeField]
+    Vector3[] _patrolPoints;
+
+    [SerializeField]
+    float _pointReachedDistance;
     private EnemiesMovementTest _movement;
     private Transform _player;
     private bool _isChasing = false;
     private int _currentPatrolIndex = 0;
 
+    AttackComponent _atk;
+    audio_gameplay audioGameplay;
+    public bool IsChasing
+    {
+        get => _isChasing;
+        private set
+        {
+            if (_isChasing != value)
+            {
+                _isChasing = value;
+                if (_isChasing == true)
+                {
+                    audioGameplay.OnEnemyChasing(this);
+                }
+                else if (_isChasing == false)
+                {
+                    audioGameplay.OnEnemyStoppedChasing(this);
+                }
+            }
+        }
+    }
+
     void Start()
     {
         _movement = GetComponent<EnemiesMovementTest>();
-        
+        _atk = GetComponent<AttackComponent>();
+        GameObject aS = GameObject.FindGameObjectWithTag("Audio Game");
+        audioGameplay = aS.GetComponent<audio_gameplay>();
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             _player = playerObj.transform;
-            
+
         if (_patrolPoints != null && _patrolPoints.Length > 0)
         {
             _movement.SetTargetWithDelay(_patrolPoints[_currentPatrolIndex]);
@@ -35,7 +66,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (_player == null) 
+        if (_player == null)
         {
             //Si no hay jugador solo patrulla
             PatrolBehavior();
@@ -44,11 +75,12 @@ public class EnemyAI : MonoBehaviour
 
         bool canSeePlayer = CheckPlayerDetection();
         float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
-        
+
         if (canSeePlayer)
         {
-            _isChasing = true;
-            
+            // _isChasing = true;
+            IsChasing = true;
+
             if (distanceToPlayer > _attackRange)
             {
                 _movement.ResumeMovement();
@@ -57,11 +89,13 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 _movement.StopMovement();
+                _atk.Attack(AttackType.Light);
             }
         }
         else if (_isChasing)
         {
-            _isChasing = false;
+            // _isChasing = false;
+            IsChasing = false;
             ResumePatrol();
         }
         else
@@ -73,12 +107,21 @@ public class EnemyAI : MonoBehaviour
     bool CheckPlayerDetection()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
-        if (distanceToPlayer > _detectionRange) return false;
+        if (distanceToPlayer > _detectionRange)
+            return false;
 
         Vector3 directionToPlayer = (_player.position - transform.position).normalized;
         RaycastHit hit;
-        
-        if (Physics.Raycast(transform.position, directionToPlayer, out hit, _detectionRange, _obstacleLayer))
+
+        if (
+            Physics.Raycast(
+                transform.position,
+                directionToPlayer,
+                out hit,
+                _detectionRange,
+                _obstacleLayer
+            )
+        )
         {
             return hit.collider.CompareTag("Player");
         }
@@ -88,10 +131,11 @@ public class EnemyAI : MonoBehaviour
 
     void PatrolBehavior()
     {
-        if (_patrolPoints == null || _patrolPoints.Length == 0) return;
+        if (_patrolPoints == null || _patrolPoints.Length == 0)
+            return;
 
         Vector3 currentTarget = _patrolPoints[_currentPatrolIndex];
-        
+
         if (Vector3.Distance(transform.position, currentTarget) <= _pointReachedDistance)
         {
             GoToNextPatrolPoint();
@@ -109,11 +153,11 @@ public class EnemyAI : MonoBehaviour
         if (_patrolPoints != null && _patrolPoints.Length > 0)
         {
             _movement.ResumeMovement();
-            
+
             //Encontrar el punto mas cercano
             float closestDistance = float.MaxValue;
             int closestIndex = 0;
-            
+
             for (int i = 0; i < _patrolPoints.Length; i++)
             {
                 float distance = Vector3.Distance(transform.position, _patrolPoints[i]);
@@ -123,13 +167,13 @@ public class EnemyAI : MonoBehaviour
                     closestIndex = i;
                 }
             }
-            
+
             _currentPatrolIndex = closestIndex;
             _movement.SetTargetWithDelay(_patrolPoints[_currentPatrolIndex]);
         }
     }
 
-    //Metodos publicos para el ataque 
+    //Metodos publicos para el ataque
     public void ForceStopForAttack(float stopDuration)
     {
         _movement.StopMovement();
@@ -139,11 +183,11 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator ResumeAfterAttack(float stopDuration)
     {
         yield return new WaitForSeconds(stopDuration);
-        
+
         if (!_isChasing)
         {
             _movement.ResumeMovement();
-            
+
             if (!_isChasing && _patrolPoints != null && _patrolPoints.Length > 0)
             {
                 _movement.SetTargetWithDelay(_patrolPoints[_currentPatrolIndex]);
@@ -157,15 +201,15 @@ public class EnemyAI : MonoBehaviour
         //Rangos basicos
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _detectionRange);
-    
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _attackRange);
-    
+
         //Puntos de patrullaje
         if (_patrolPoints != null && _patrolPoints.Length > 0)
         {
             Gizmos.color = Color.green;
-        
+
             for (int i = 0; i < _patrolPoints.Length; i++)
             {
                 Gizmos.DrawWireCube(_patrolPoints[i], Vector3.one * 0.3f);
@@ -173,6 +217,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public bool IsChasing() => _isChasing; //Saber si esta persigiendo al Player
+    // public bool IsChasing() => _isChasing; //Saber si esta persigiendo al Player
+
     public void SetPatrolPoints(Vector3[] points) => _patrolPoints = points; //Agregar un punto de patrullaje
+
+    void OnDestroy()
+    {
+        audioGameplay.OnEnemyStoppedChasing(this);
+    }
 }

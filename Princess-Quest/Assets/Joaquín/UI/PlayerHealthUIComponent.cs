@@ -4,14 +4,14 @@ using UnityEngine.UI;
 public class PlayerHealthUI : MonoBehaviour
 {
     [SerializeField]
-    Health PlayerHealth;
+    PlayerHealth PlayerHealth;
 
     [SerializeField]
     GameObject healthIcon;
 
     void Start()
     {
-        PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        PlayerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
 
         for (int i = 0; i < PlayerHealth.MaxHP; i++)
         {

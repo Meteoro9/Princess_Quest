@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Hitbox : MonoBehaviour
 {
-    UnityEvent OnHitboxHit = new();
+    public delegate void HitEvent();
+    public HitEvent OnHitboxHit;
     public HitboxData hitboxData;
+
+    BoxCollider boxCollider;
 
     void OnEnable()
     {
-        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
 
         hitboxData ??= new HitboxData(gameObject, 1);
@@ -25,4 +27,22 @@ public class Hitbox : MonoBehaviour
             OnHitboxHit?.Invoke();
         }
     }
+
+#if UNITY_EDITOR
+
+    void OnDrawGizmos()
+    {
+        boxCollider = GetComponent<BoxCollider>();
+        Gizmos.color = Color.red;
+        if (transform.rotation.y == 0)
+        {
+            Gizmos.DrawWireCube(transform.position + boxCollider.center, boxCollider.size);
+        }
+        else
+        {
+            Vector3 rotColl = new Vector3(boxCollider.center.x * -1, boxCollider.center.y);
+            Gizmos.DrawWireCube(transform.position + rotColl, boxCollider.size);
+        }
+    }
+#endif
 }

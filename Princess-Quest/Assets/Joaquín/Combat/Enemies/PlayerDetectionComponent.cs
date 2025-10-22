@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -71,11 +70,17 @@ public class PlayerDetectionComponent : MonoBehaviour
     [SerializeField]
     Color debugBoxColor = Color.cyan;
 
+    [SerializeField]
+    bool showDebugCollider = true;
+
     void OnDrawGizmos()
     {
-        BoxCollider boxColl = GetComponent<BoxCollider>();
-        Gizmos.color = debugBoxColor;
-        Gizmos.DrawWireCube(transform.position, boxColl.size);
+        if (showDebugCollider)
+        {
+            BoxCollider boxColl = GetComponent<BoxCollider>();
+            Gizmos.color = debugBoxColor;
+            Gizmos.DrawWireCube(transform.position + boxColl.center, boxColl.size);
+        }
     }
 
 #endif
