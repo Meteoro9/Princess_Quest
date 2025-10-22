@@ -8,6 +8,12 @@ public class ExitLevelComponent : MonoBehaviour
     [SerializeField]
     UnityEvent OnLevelExit = new();
 
+    [SerializeField]
+    UnityEvent OnPlayerEnterArea = new();
+
+    [SerializeField]
+    UnityEvent OnPlayerLeftArea = new();
+
     void Update()
     {
         if (playerIsIn && Input.GetKeyDown(KeyCode.W))
@@ -21,6 +27,7 @@ public class ExitLevelComponent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsIn = true;
+            OnPlayerEnterArea?.Invoke();
         }
     }
 
@@ -29,6 +36,7 @@ public class ExitLevelComponent : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsIn = false;
+            OnPlayerLeftArea?.Invoke();
         }
     }
 #if UNITY_EDITOR

@@ -35,6 +35,11 @@ public class audio_gameplay : MonoBehaviour
 
     public void OnEnemyStoppedChasing(EnemyAI enemyAI)
     {
+        // Console shows error msg if this check isnt here
+        if (!audioSource)
+        {
+            return;
+        }
         if (enemiesChasing.Contains(enemyAI))
         {
             enemiesChasing.Remove(enemyAI);

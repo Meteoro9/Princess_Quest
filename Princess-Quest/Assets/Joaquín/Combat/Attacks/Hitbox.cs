@@ -1,9 +1,10 @@
 using UnityEngine;
-using UnityEngine.Events;
 
+[RequireComponent(typeof(BoxCollider))]
 public class Hitbox : MonoBehaviour
 {
-    UnityEvent OnHitboxHit = new();
+    public delegate void HitEvent();
+    public HitEvent OnHitboxHit;
     public HitboxData hitboxData;
 
     BoxCollider boxCollider;
