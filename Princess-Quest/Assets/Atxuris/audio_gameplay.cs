@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -8,10 +10,18 @@ public class audio_gameplay : MonoBehaviour
     List<EnemyAI> enemiesChasing = new();
 
     [SerializeField]
-    AudioSource NormalMusic;
+    AudioSource NormalMusic; // se cambio audio clip por audio source
 
     [SerializeField]
-    AudioSource CombatMusic;
+    AudioSource CombatMusic; // el mismo cambio
+
+    [SerializeField] float fadeDuration = 2.0f;
+
+    [SerializeField]
+    [Range(0f, 1f)] float targetVolume = 0.3f;
+
+    private Coroutine normalMusicFade;
+    private Coroutine combatMusicFade;
 
     void Awake()
     {
@@ -19,8 +29,13 @@ public class audio_gameplay : MonoBehaviour
         //audioSource.clip = NormalMusic;
         //audioSource.Play();
 
-        CombatMusic.Play();
-        NormalMusic.Play();
+        // Asignamos volumen de inicio
+        NormalMusic.volume = targetVolume;
+        CombatMusic.volume = 0f;
+
+        // Se reproducen ambas, una en silencio
+        CombatMusic.Play(); // nuevo
+        NormalMusic.Play(); // nuevo
     }
 
     public void OnEnemyChasing(EnemyAI enemyAI)
@@ -35,8 +50,12 @@ public class audio_gameplay : MonoBehaviour
                 audioSource.Play();
             }*/
 
-            NormalMusic.volume = 0;
-            CombatMusic.volume = 0.3f;
+            //NormalMusic.volume = 0; // nuevo
+            //CombatMusic.volume = 0.3f; // nuevo
+
+            StartFade(NormalMusic, 0f);
+            StartFade(CombatMusic, targetVolume);
+
         }
     }
 
@@ -57,8 +76,59 @@ public class audio_gameplay : MonoBehaviour
             //audioSource.clip = NormalMusic;
             //audioSource.Play();
 
-            CombatMusic.volume = 0;
-            NormalMusic.volume = 0.3f;
+            //CombatMusic.volume = 0; // nuevo
+            //NormalMusic.volume = 0.3f; // nuevo
+
+            StartFade(NormalMusic, targetVolume);
+            StartFade(CombatMusic, 0f);
         }
+
+
+    }
+
+    void StartFade(AudioSource source, float targetVol)
+    {
+        // Detenemos cualquier corrutina actual:        
+        if (source == NormalMusic && normalMusicFade != null)
+        {
+            StopCoroutine(normalMusicFade);
+        }
+        else if (source == CombatMusic && combatMusicFade != null)
+        {
+            StopCoroutine(combatMusicFade);
+        }
+
+        // Iniciamos la nueva corrutina correspondiente
+        Coroutine newFade = StartCoroutine(FadeAudio(source, targetVol, fadeDuration));
+
+        if (source == NormalMusic)
+            normalMusicFade = newFade;
+        else if (source == CombatMusic)
+            combatMusicFade = newFade;
+
+    }
+
+    IEnumerator FadeAudio(AudioSource source, float targetVol, float duration)
+    {
+        float timer = 0f;
+        float startVolume = source.volume;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+
+            float progress = timer / duration;
+
+            source.volume = Mathf.Lerp(startVolume, targetVol, progress);
+
+            yield return null;
+        }
+
+        source.volume = targetVol;
+
+        if (source == NormalMusic)
+            normalMusicFade = null;
+        else if (source == CombatMusic)
+            combatMusicFade = null;
     }
 }
