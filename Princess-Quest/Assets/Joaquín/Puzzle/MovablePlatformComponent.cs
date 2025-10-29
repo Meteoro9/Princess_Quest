@@ -32,9 +32,18 @@ public class MovablePlatform : MonoBehaviour
         }
     }
 
+    Vector3 originalPos;
+
+    [SerializeField]
+    bool MoveBack;
+
+    [SerializeField]
+    float waitTime;
+
     void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
+        originalPos = transform.position;
     }
 
     public void AddButton()
@@ -53,6 +62,27 @@ public class MovablePlatform : MonoBehaviour
         StartCoroutine(MovementCoroutine());
     }
 
+    public void ReturnToOrignialPosition()
+    {
+        StartCoroutine(ReturnCor());
+    }
+
+    IEnumerator ReturnCor()
+    {
+        while (Vector3.Distance(transform.position, originalPos) > minDistance)
+        {
+            Vector3 dir = (originalPos - transform.position).normalized;
+
+            rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
+        }
+        if (MoveBack)
+        {
+            yield return new WaitForSeconds(waitTime);
+            MoveToTargetPosition();
+        }
+    }
+
     IEnumerator MovementCoroutine()
     {
         while (Vector3.Distance(transform.position, targetPosition) > minDistance)
@@ -61,6 +91,11 @@ public class MovablePlatform : MonoBehaviour
 
             rb.MovePosition(rb.position + dir * speed * Time.deltaTime);
             yield return new WaitForFixedUpdate();
+        }
+        if (MoveBack)
+        {
+            yield return new WaitForSeconds(waitTime);
+            ReturnToOrignialPosition();
         }
     }
 }
