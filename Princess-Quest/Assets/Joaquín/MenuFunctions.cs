@@ -21,6 +21,16 @@ public class MenuFunctions : ScriptableObject
         Instantiate(element, rectTransform);
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
     public void Exit()
     {
 #if UNITY_EDITOR

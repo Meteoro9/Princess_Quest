@@ -8563,7 +8563,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2180714995529405581, guid: edfc0e9abcbae3943be5f198d43343ee, type: 3}
       propertyPath: OnLevelExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Atx
+      value: Plataformas
       objectReference: {fileID: 0}
     - target: {fileID: 6915022048463897578, guid: edfc0e9abcbae3943be5f198d43343ee, type: 3}
       propertyPath: m_LocalPosition.x

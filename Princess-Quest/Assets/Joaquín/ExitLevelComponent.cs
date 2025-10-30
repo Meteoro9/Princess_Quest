@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(BoxCollider))]
 public class ExitLevelComponent : MonoBehaviour
 {
     bool playerIsIn = false;
@@ -16,7 +17,7 @@ public class ExitLevelComponent : MonoBehaviour
 
     void Update()
     {
-        if (playerIsIn && Input.GetKeyDown(KeyCode.W))
+        if (playerIsIn && UpKeyPressed())
         {
             OnLevelExit?.Invoke();
         }
@@ -38,6 +39,11 @@ public class ExitLevelComponent : MonoBehaviour
             playerIsIn = false;
             OnPlayerLeftArea?.Invoke();
         }
+    }
+
+    bool UpKeyPressed()
+    {
+        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
     }
 #if UNITY_EDITOR
 
