@@ -260,6 +260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f33a0551937e24185367b034cd6312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnAttackHit:
+    m_PersistentCalls:
+      m_Calls: []
   hitboxPrefab: {fileID: 6249393059493564986, guid: ce7347d9e204c544ea4ebb41178b2ff4, type: 3}
   attackLight: {fileID: 11400000, guid: 50b4c30191549734c82e4a5142303e26, type: 2}
   attackHeavy: {fileID: 11400000, guid: 2fe7cd42242e53c429624c9190437fad, type: 2}
@@ -340,6 +343,7 @@ GameObject:
   - component: {fileID: 5593450843327826845}
   - component: {fileID: 8926623301307247807}
   - component: {fileID: 7758022667506548765}
+  - component: {fileID: 5528098690969536940}
   m_Layer: 0
   m_Name: Princess
   m_TagString: Untagged
@@ -439,3 +443,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5528098690969536940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278086642729002780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00516044d8c23604aab5f158f27bc8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackComponent: {fileID: 2410456025634593588}

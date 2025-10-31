@@ -34,14 +34,19 @@ public class Hitbox : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider>();
         Gizmos.color = Color.red;
+        Vector3 actualSize = new Vector3(
+            boxCollider.size.x * transform.parent.localScale.x,
+            boxCollider.size.y * transform.parent.localScale.y,
+            boxCollider.size.z * transform.parent.localScale.z
+        );
         if (transform.rotation.y == 0)
         {
-            Gizmos.DrawWireCube(transform.position + boxCollider.center, boxCollider.size);
+            Gizmos.DrawWireCube(transform.position + boxCollider.center, actualSize);
         }
         else
         {
             Vector3 rotColl = new Vector3(boxCollider.center.x * -1, boxCollider.center.y);
-            Gizmos.DrawWireCube(transform.position + rotColl, boxCollider.size);
+            Gizmos.DrawWireCube(transform.position + rotColl, actualSize);
         }
     }
 #endif

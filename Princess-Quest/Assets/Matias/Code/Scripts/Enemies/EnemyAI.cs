@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
         get => _isChasing;
         private set
         {
-            if (_isChasing != value)
+            if (_isChasing != value && audioGameplay)
             {
                 _isChasing = value;
                 if (_isChasing == true)
@@ -52,6 +52,7 @@ public class EnemyAI : MonoBehaviour
         _movement = GetComponent<EnemiesMovementTest>();
         _atk = GetComponent<AttackComponent>();
         GameObject aS = GameObject.FindGameObjectWithTag("Audio Game");
+
         audioGameplay = aS.GetComponent<audio_gameplay>();
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");

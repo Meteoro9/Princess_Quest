@@ -19,6 +19,10 @@ public class AttackComponent : MonoBehaviour
     bool isAttacking;
     public bool IsAttacking => isAttacking;
 
+    public delegate void AttackEvent(AttackSO attackSO);
+    public event AttackEvent AttackStarted;
+    public AttackEvent AttackEnded;
+
     public void Attack(AttackType attackType)
     {
         if (!isAttacking)
@@ -30,6 +34,8 @@ public class AttackComponent : MonoBehaviour
 
     IEnumerator AttackCor(AttackSO attack)
     {
+        // HandleAnimationStart(attack);
+        AttackStarted?.Invoke(attack);
         isAttacking = true;
         GameObject newHitbox = Instantiate(hitboxPrefab, transform);
         Hitbox hitbox = newHitbox.GetComponent<Hitbox>();
@@ -45,6 +51,8 @@ public class AttackComponent : MonoBehaviour
 
         Destroy(newHitbox);
         isAttacking = false;
+        AttackEnded?.Invoke(attack);
+        // HandleAnimationEnd(attack);
     }
 
     AttackSO GetBaseAttack(AttackType attackType)
@@ -61,4 +69,28 @@ public class AttackComponent : MonoBehaviour
     {
         OnAttackHit?.Invoke();
     }
+
+    /*     void HandleAnimationStart(AttackSO attackSO)
+        {
+            if (attackSO.type == AttackType.Light)
+            {
+                animator.SetBool("Punch", true);
+            }
+            else if (attackSO.type == AttackType.Heavy)
+            {
+                animator.SetBool("Kick", true);
+            }
+        }
+    
+        void HandleAnimationEnd(AttackSO attackSO)
+        {
+            if (attackSO.type == AttackType.Light)
+            {
+                animator.SetBool("Punch", false);
+            }
+            else if (attackSO.type == AttackType.Heavy)
+            {
+                animator.SetBool("Kick", false);
+            }
+        } */
 }
