@@ -9,6 +9,8 @@ public class audio_gameplay : MonoBehaviour
     //AudioSource audioSource;
     List<EnemyAI> enemiesChasing = new();
 
+    private bool isShottingDown = false; // Para evitar crasheo
+
     [SerializeField]
     AudioSource NormalMusic; // se cambio audio clip por audio source
 
@@ -23,36 +25,30 @@ public class audio_gameplay : MonoBehaviour
     private Coroutine normalMusicFade;
     private Coroutine combatMusicFade;
 
+    private void OnDisable()
+    {
+        isShottingDown = true;
+    }
+
     void Awake()
     {
-        //audioSource = GetComponent<AudioSource>();
-        //audioSource.clip = NormalMusic;
-        //audioSource.Play();
-
         // Asignamos volumen de inicio
         NormalMusic.volume = targetVolume;
         CombatMusic.volume = 0f;
 
         // Se reproducen ambas, una en silencio
-        CombatMusic.Play(); // nuevo
-        NormalMusic.Play(); // nuevo
+        CombatMusic.Play(); 
+        NormalMusic.Play(); 
     }
 
     public void OnEnemyChasing(EnemyAI enemyAI)
     {
+        if (isShottingDown) return;
+
         if (!enemiesChasing.Contains(enemyAI))
         {
             enemiesChasing.Add(enemyAI);
-            /*if (audioSource.clip != CombatMusic) // Subir volumen música de combate y bajar exploración
-            {
-                //audioSource.clip = CombatMusic;
-                
-                audioSource.Play();
-            }*/
-
-            //NormalMusic.volume = 0; // nuevo
-            //CombatMusic.volume = 0.3f; // nuevo
-
+            
             StartFade(NormalMusic, 0f);
             StartFade(CombatMusic, targetVolume);
 
@@ -61,11 +57,8 @@ public class audio_gameplay : MonoBehaviour
 
     public void OnEnemyStoppedChasing(EnemyAI enemyAI)
     {
-        // Console shows error msg if this check isnt here
-        /*if (!audioSource)
-        {
-            return;
-        }*/
+        if (isShottingDown) return;
+
         if (enemiesChasing.Contains(enemyAI))
         {
             enemiesChasing.Remove(enemyAI);
@@ -73,17 +66,9 @@ public class audio_gameplay : MonoBehaviour
 
         if (enemiesChasing.Count == 0) // Bajar música de combate y subir exploración
         {
-            //audioSource.clip = NormalMusic;
-            //audioSource.Play();
-
-            //CombatMusic.volume = 0; // nuevo
-            //NormalMusic.volume = 0.3f; // nuevo
-
             StartFade(NormalMusic, targetVolume);
             StartFade(CombatMusic, 0f);
         }
-
-
     }
 
     void StartFade(AudioSource source, float targetVol)
