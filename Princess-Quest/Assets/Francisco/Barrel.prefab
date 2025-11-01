@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2375070979725955110}
   m_Layer: 3
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 3198629234952858362}
-  weight: 0.5
+  weight: 0.4
   isHurtboxEventActive: 1
 --- !u!114 &2375070979725955110
 MonoBehaviour:
