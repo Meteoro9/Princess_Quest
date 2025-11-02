@@ -44,7 +44,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d15f7338d693f0343843a6b9096d27f6, type: 3}
+  m_Resource: {fileID: 8300000, guid: 641aabe9a7c271b42a2d53fac3230386, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -145,6 +145,8 @@ MonoBehaviour:
   pasos: {fileID: 8300000, guid: 14ae706fef2303e4cb71112dbd5d250b, type: 3}
   vozPrincesaAtaque: {fileID: 8300000, guid: cc4ca2a8f0bf22741b72dc25d9db1b04, type: 3}
   saltoPrincesa: {fileID: 8300000, guid: f65b8caedf0c89b4c9f6ea1408f5e362, type: 3}
+  playerMovement: {fileID: 2073289207950495318}
+  attackComponent: {fileID: 2410456025634593588}
 --- !u!1 &3878137807594216835
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +164,7 @@ GameObject:
   - component: {fileID: 3763405434714417384}
   - component: {fileID: 1248023585025171261}
   - component: {fileID: 4675406368591707409}
+  - component: {fileID: 2111793739396000105}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -348,6 +351,20 @@ MonoBehaviour:
   rigidBody: {fileID: 3444289445760832831}
   weight: 1
   isHurtboxEventActive: 1
+--- !u!114 &2111793739396000105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878137807594216835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e37951460a986a4c864b562b779f599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuFunctions: {fileID: 11400000, guid: f2c09ea8d7bb4b84fb372b34fd7d8a27, type: 2}
+  pauseScreen: {fileID: 2961480672293182736, guid: f321209894efde84094c8ead8aa12151, type: 3}
 --- !u!1 &7278086642729002780
 GameObject:
   m_ObjectHideFlags: 0
