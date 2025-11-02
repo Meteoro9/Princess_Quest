@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NormalMusic: {fileID: 2160151887555928067}
   CombatMusic: {fileID: 9127373034641541841}
+  fadeDuration: 2
+  targetVolume: 0.3
 --- !u!82 &2160151887555928067
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57,11 +59,11 @@ AudioSource:
   m_GameObject: {fileID: 2671704870242389339}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7959227451375464165, guid: b36995d2ba0e922439153bbdef3e6c2a, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 3b1e49ce12c80c149983edeec3a90964, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -154,9 +156,9 @@ AudioSource:
   m_GameObject: {fileID: 2671704870242389339}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7959227451375464165, guid: b36995d2ba0e922439153bbdef3e6c2a, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: f6bbe0e97b0e17b4ea7f947cd316c7eb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1

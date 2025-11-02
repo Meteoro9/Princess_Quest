@@ -518,9 +518,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2160151887555928067, guid: 297bb1947f8ce0e4ab349c083c5d55e5, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160151887555928067, guid: 297bb1947f8ce0e4ab349c083c5d55e5, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: dab86d68ddb552f4da8e36140df18a3c, type: 3}
+      objectReference: {fileID: 8300000, guid: 3a672bbf034cd9e489ed9e37a1b08f9f, type: 3}
     - target: {fileID: 2671704870242389339, guid: 297bb1947f8ce0e4ab349c083c5d55e5, type: 3}
       propertyPath: m_Name
       value: Audio_Game
@@ -565,6 +569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9127373034641541841, guid: 297bb1947f8ce0e4ab349c083c5d55e5, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: ba9bf145330a80f48af0c5337a6df324, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
