@@ -69,6 +69,10 @@ public class MovablePlatform : MonoBehaviour
 
     IEnumerator ReturnCor()
     {
+        if (waitTime > 0)
+        {
+            yield return new WaitForSeconds(waitTime);
+        }
         while (Vector3.Distance(transform.position, originalPos) > minDistance)
         {
             Vector3 dir = (originalPos - transform.position).normalized;
@@ -78,13 +82,16 @@ public class MovablePlatform : MonoBehaviour
         }
         if (MoveBack)
         {
-            yield return new WaitForSeconds(waitTime);
             MoveToTargetPosition();
         }
     }
 
     IEnumerator MovementCoroutine()
     {
+        if (waitTime > 0)
+        {
+            yield return new WaitForSeconds(waitTime);
+        }
         while (Vector3.Distance(transform.position, targetPosition) > minDistance)
         {
             Vector3 dir = (targetPosition - transform.position).normalized;
@@ -94,7 +101,6 @@ public class MovablePlatform : MonoBehaviour
         }
         if (MoveBack)
         {
-            yield return new WaitForSeconds(waitTime);
             ReturnToOrignialPosition();
         }
     }
