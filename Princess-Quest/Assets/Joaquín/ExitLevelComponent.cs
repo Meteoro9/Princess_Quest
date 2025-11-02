@@ -47,23 +47,5 @@ public class ExitLevelComponent : MonoBehaviour
     }
 #if UNITY_EDITOR
 
-    /*   [SerializeField]
-      Color debugBoxColor = Color.yellow;
-  
-      [SerializeField]
-      BoxCollider boxColl;
-  
-      void OnDrawGizmos()
-      {
-          boxColl = GetComponent<BoxCollider>();
-          Vector3 actualSize = new(
-              boxColl.size.x * transform.parent.localScale.x,
-              boxColl.size.y * transform.parent.localScale.y,
-              boxColl.size.z * transform.parent.localScale.z
-          );
-          Gizmos.color = debugBoxColor;
-          Gizmos.DrawWireCube(transform.position + boxColl.center, actualSize);
-      } */
-
 #endif
 }

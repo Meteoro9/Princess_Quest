@@ -21,8 +21,6 @@ public abstract class EnemiesMovementTest : MonoBehaviour
     protected Vector3 _currentDirection;
     protected MovementState _currentState = MovementState.Moving;
 
-    // protected Vector3 _baseScale;
-
     public enum MovementState
     {
         Moving,
@@ -34,7 +32,6 @@ public abstract class EnemiesMovementTest : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
-        // _baseScale = transform.localScale;
 
         ConfigurePhysics();
     }
@@ -106,12 +103,10 @@ public abstract class EnemiesMovementTest : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
-        // transform.localScale = _baseScale;
         else if (_currentDirection.x < 0)
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
-        // transform.localScale = new Vector3(-_baseScale.x, _baseScale.y, _baseScale.z);
     }
 
     protected virtual void FixedUpdate()

@@ -10,7 +10,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     float _attackRange;
 
-    //[SerializeField] LayerMask _playerLayer;
     [SerializeField]
     LayerMask _obstacleLayer;
 
@@ -79,7 +78,6 @@ public class EnemyAI : MonoBehaviour
 
         if (canSeePlayer)
         {
-            // _isChasing = true;
             IsChasing = true;
 
             if (distanceToPlayer > _attackRange)
@@ -95,7 +93,6 @@ public class EnemyAI : MonoBehaviour
         }
         else if (_isChasing)
         {
-            // _isChasing = false;
             IsChasing = false;
             ResumePatrol();
         }
@@ -217,8 +214,6 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-
-    // public bool IsChasing() => _isChasing; //Saber si esta persigiendo al Player
 
     public void SetPatrolPoints(Vector3[] points) => _patrolPoints = points; //Agregar un punto de patrullaje
 

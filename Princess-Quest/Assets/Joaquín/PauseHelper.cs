@@ -14,7 +14,7 @@ public class PauseHelper : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Si no hay menú de pausa o fue destruido, crear uno
+            //Si no hay menu de pausa o fue destruido crea uno
             if (currentPauseMenu == null || !currentPauseMenu)
             {
                 Transform uiParent = GameObject.FindGameObjectWithTag("UI").transform.GetChild(0);
@@ -23,7 +23,7 @@ public class PauseHelper : MonoBehaviour
             }
             else
             {
-                // Si hay menú de pausa, destruirlo
+                //Si hay menu de pausa lo destruye
                 Destroy(currentPauseMenu);
                 menuFunctions.ResumeGame();
             }

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         _moveH = Input.GetAxis("Horizontal");
 
-        // Salto
+        //Salto
         if (Input.GetButtonDown("Jump") && _grounded)
         {
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, 0f);
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        // Movimiento horizontal
+        //Movimiento horizontal
         _movement = Vector3.right * _moveH * _speed * Time.fixedDeltaTime;
         _rb.MovePosition(_rb.position + _movement);
         if (_moveH != 0f)
@@ -85,27 +85,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 OnStoppedWalking?.Invoke();
             }
-
-            //_isWalking = true;
         }
         else
         {
             _animator.SetBool("Run", false);
 
             OnStoppedWalking?.Invoke();
-
-            //_isWalking = false;
         }
     }
 
     void Rotation()
     {
-        // Rotación instantánea según la dirección
-        if (_moveH > 0.1f) // Derecha
+        //Rotación instantánea según la dirección
+        if (_moveH > 0.1f) //Derecha
         {
             _rb.MoveRotation(Quaternion.Euler(0, 0f, 0));
         }
-        else if (_moveH < -0.1f) // Izquierda
+        else if (_moveH < -0.1f) //Izquierda
         {
             _rb.MoveRotation(Quaternion.Euler(0, 180f, 0));
         }
@@ -113,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        // Dibuja el raycast, Verde significa que toca el suelo, rojo que no
+        //Dibuja el raycast Verde significa que toca el suelo rojo que no
         bool grounded = Physics.Raycast(
             transform.position,
             Vector3.down,
@@ -126,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             transform.position + Vector3.down * _groundCheckDistance
         );
 
-        // Dibuja una esfera pequeña al final del rayo
+        //Dibuja una esfera pequeña al final del rayo
         Gizmos.DrawSphere(transform.position + Vector3.down * _groundCheckDistance, 0.05f);
     }
 }
