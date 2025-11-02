@@ -20,7 +20,7 @@ public class AttackComponent : MonoBehaviour
     public bool IsAttacking => isAttacking;
 
     public delegate void AttackEvent(AttackSO attackSO);
-    public event AttackEvent AttackStarted;
+    public AttackEvent AttackStarted;
     public AttackEvent AttackEnded;
 
     public void Attack(AttackType attackType)
@@ -35,7 +35,6 @@ public class AttackComponent : MonoBehaviour
     IEnumerator AttackCor(AttackSO attack)
     {
         // HandleAnimationStart(attack);
-        AttackStarted?.Invoke(attack);
         isAttacking = true;
         GameObject newHitbox = Instantiate(hitboxPrefab, transform);
         Hitbox hitbox = newHitbox.GetComponent<Hitbox>();
@@ -44,6 +43,7 @@ public class AttackComponent : MonoBehaviour
 
         newHitbox.SetActive(false);
         yield return new WaitForSeconds(attack.startUpTime);
+        AttackStarted?.Invoke(attack);
         newHitbox.SetActive(true);
         yield return new WaitForSeconds(attack.activeTime);
         newHitbox.SetActive(false);
