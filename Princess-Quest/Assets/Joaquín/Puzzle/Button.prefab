@@ -85,7 +85,6 @@ GameObject:
   - component: {fileID: 2627401266758371621}
   - component: {fileID: 5628925436164450867}
   - component: {fileID: 8530745320201057827}
-  - component: {fileID: 9134512298021952387}
   m_Layer: 0
   m_Name: Button Head
   m_TagString: Untagged
@@ -139,7 +138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8551259c50c67204ea7bd33172358036, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,21 +160,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9134512298021952387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8729275691207486070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16632af7e70c05f4fb95ee0719b3dca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonComponent: {fileID: 1282595910169983171}
-  animSpeed: 1
-  amountToMoveDown: 0.27
 --- !u!1001 &1463927119871053113
 PrefabInstance:
   m_ObjectHideFlags: 0

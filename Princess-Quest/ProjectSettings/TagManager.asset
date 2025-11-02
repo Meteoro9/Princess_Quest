@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - UI
   - Audio Game
-  - Barrel
   layers:
   - Default
   - TransparentFX
