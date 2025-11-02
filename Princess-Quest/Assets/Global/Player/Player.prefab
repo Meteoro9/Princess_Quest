@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 3763405434714417384}
   - component: {fileID: 1248023585025171261}
   - component: {fileID: 4675406368591707409}
+  - component: {fileID: 1018300268719215324}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -348,6 +349,20 @@ MonoBehaviour:
   rigidBody: {fileID: 3444289445760832831}
   weight: 1
   isHurtboxEventActive: 1
+--- !u!114 &1018300268719215324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878137807594216835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e37951460a986a4c864b562b779f599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuFunctions: {fileID: 11400000, guid: f2c09ea8d7bb4b84fb372b34fd7d8a27, type: 2}
+  pauseScreen: {fileID: 2961480672293182736, guid: f321209894efde84094c8ead8aa12151, type: 3}
 --- !u!1 &7278086642729002780
 GameObject:
   m_ObjectHideFlags: 0

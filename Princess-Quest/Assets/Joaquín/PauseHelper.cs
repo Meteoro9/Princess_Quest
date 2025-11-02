@@ -8,12 +8,25 @@ public class PauseHelper : MonoBehaviour
     [SerializeField]
     GameObject pauseScreen;
 
+    private GameObject currentPauseMenu;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 1)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            menuFunctions.AddToUI(pauseScreen);
-            menuFunctions.PauseGame();
+            // Si no hay menú de pausa o fue destruido, crear uno
+            if (currentPauseMenu == null || !currentPauseMenu)
+            {
+                Transform uiParent = GameObject.FindGameObjectWithTag("UI").transform.GetChild(0);
+                currentPauseMenu = Instantiate(pauseScreen, uiParent);
+                menuFunctions.PauseGame();
+            }
+            else
+            {
+                // Si hay menú de pausa, destruirlo
+                Destroy(currentPauseMenu);
+                menuFunctions.ResumeGame();
+            }
         }
     }
 }
