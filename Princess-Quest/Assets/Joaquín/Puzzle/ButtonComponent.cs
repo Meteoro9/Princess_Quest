@@ -5,17 +5,15 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider))]
 public class ButtonComponent : MonoBehaviour
 {
-    [SerializeField]
-    UnityEvent OnButtonPushed;
+    public UnityEvent OnButtonPushed;
 
-    [SerializeField]
-    UnityEvent OnButtonReleased;
+    public UnityEvent OnButtonReleased;
 
     List<GameObject> objectsPressing = new();
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Rigidbody>() != null)
+        if (other.CompareTag("Barrel"))
         {
             objectsPressing.Add(other.gameObject);
             if (objectsPressing.Count == 1)
@@ -27,7 +25,7 @@ public class ButtonComponent : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Rigidbody>() != null)
+        if (other.CompareTag("Barrel"))
         {
             objectsPressing.Remove(other.gameObject);
             if (objectsPressing.Count == 0)
