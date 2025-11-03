@@ -4140,7 +4140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4834897826128500492, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4834897826128500492, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
       propertyPath: m_Resource
@@ -4193,9 +4193,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3878137807594216835, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
       insertIndex: -1
       addedObject: {fileID: 982391522}
-    - targetCorrespondingSourceObject: {fileID: 3076618433965311579, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1786615782}
   m_SourcePrefab: {fileID: 100100000, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
 --- !u!1001 &612598272
 PrefabInstance:
@@ -11918,25 +11915,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1786615775 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3076618433965311579, guid: d06e8d9ff43640b40b32737a4ae0fe25, type: 3}
-  m_PrefabInstance: {fileID: 599899460}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1786615782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786615775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 945c4c61452b54d4883651522b9d30fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRandomPitch: 0.9
-  maxRandomPitch: 1.1
 --- !u!4 &1800543844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8164808024520472972, guid: 76a16be548945e84faaf301e892f7774, type: 3}
